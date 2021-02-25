@@ -9,9 +9,9 @@ RUN apk --update add\
 
 RUN addgroup -S developer &&\
     adduser -S -D -h /home/developer developer developer &&\
-    chgrp -R developer /usr/local && chmod -R g+rw /usr/local &&\
+    chgrp -Rv developer /usr/local && chmod -Rv g+rw /usr/local &&\
     mkdir -pv /var/run/ccache &&\
-    chgrp -R developer /var/run/ && chmod -R g+rw /var/run/
+    chgrp -Rv developer /var/run/ && chmod -Rv g+rw /var/run/
 
 WORKDIR /home/developer
 USER developer
