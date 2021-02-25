@@ -19,9 +19,9 @@ USER developer
 RUN ccache -o cache_dir=/var/run/ccache/ && ccache -o max_size=1.0G &&\
     mkdir -pv ~/Developer ~/Downloads
 
-RUN cd ~/Downloads && axel -a -n 3 \
+RUN cd ~/Downloads && axel -n 3 \
     "http://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-1.0.4.tar.gz" &&\
-    tar xvf SDL2_gfx-1.0.4.tar.gz && cd SDL_gfx-1.0.4/ &&\
+    tar xvf SDL2_gfx-1.0.4.tar.gz && cd SDL2_gfx-1.0.4/ &&\
     mkdir -pv build && cd build &&\
     ../configure CC="ccache gcc" CXX="ccache g++" &&\
     make -j 3 install
