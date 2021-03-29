@@ -26,13 +26,6 @@ A dockerfile used to test sdaveb/quartz-warriors project.
 * sdl2-dev
 * sdl2_image-dev
 
-
-### Artifacts to cache:
-* /var/run/ccache
-* ~/.ccache/ccache.config
-* ~/Downloads/
-* ~/Developer/quartz-warriors/third_party
-
 #### SDL2_gfx installation process:
 
 1. Use axel to download sources to ~/Downloads
