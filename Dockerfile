@@ -7,16 +7,19 @@ RUN apk --update add\
     libexecinfo-dev make musl-dev\
     sdl2-dev sdl2_image-dev
 
+RUN apk add libtool
+
 RUN adduser -s /bin/sh -D -h /home/developer developer developer &&\
     chgrp -Rv developer /usr/local && chmod -Rv g+rw /usr/local &&\
     mkdir -pv /var/run/ccache &&\
     chgrp -Rv developer /var/run/ && chmod -Rv g+rw /var/run/
 
+
 WORKDIR /home/developer
 USER developer
 
-RUN ccache -o cache_dir=/var/run/ccache/ && ccache -o max_size=1.0G &&\
-    mkdir -pv ~/Developer ~/Downloads
+RUN ccache -o max_size=1.0G &&\
+    mkdir -pv ~/Downloads
 
 RUN cd ~/Downloads && axel -a -n 3 \
     "http://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-1.0.4.tar.gz" &&\
@@ -25,7 +28,7 @@ RUN cd ~/Downloads && axel -a -n 3 \
     ../configure CC="ccache gcc" CXX="ccache g++" &&\
     make -j 3 install
 
-WORKDIR /home/developer/Developer
+WORKDIR /home/developer
 
 
 # vim:set et sts=4 sw=4 ts=8:
